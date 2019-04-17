@@ -1,0 +1,37 @@
+list = [
+    ('包', 200),
+    ('手表', 120),
+    ('衣服', 88),
+    ('裙子', 120),
+    ('手机',2000)
+]
+shopping_list = []
+money = input("请输入你的工资：")
+if money.isdigit():
+    money = int(money)
+    while True:
+        print("商品如下：")
+        for a,b in enumerate(list):
+            print(a,b)
+        choice = input("请输入要购买的商品编号：")
+        if choice.isdigit():
+            choice = int(choice)
+            if choice < len(list) and choice > -1:
+                b = list[choice]
+                if money >= b[1]:
+                    shopping_list.append(b)
+                    money -= b[1]
+                    print("购买商品",b, "成功您的余额为", money, "元！")
+                else:
+                    print("您的余额为", money, "余额不足以购买此商品，购买失败！")
+
+            else:
+                print("并无此产品！")
+        elif choice == "q":
+            print("--------shopping list-------")
+            for i in shopping_list:
+                print(i)
+            print("您的余额为",money,'元')
+            break
+        else:
+            print("输入错误！！！")
